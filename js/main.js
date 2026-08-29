@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var categories = ['Todos', 'Landing Pages', 'Branding', 'UI/UX', 'Campanhas', 'Ilustração'];
   var activeCategory = 'Todos';
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function renderFilter() {
     filterEl.innerHTML = renderFilterBar(categories, activeCategory);
@@ -20,7 +21,30 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!button) return;
     activeCategory = button.getAttribute('data-category');
     renderFilter();
-    renderGridForCategory();
+
+    if (window.gsap) {
+      gsap.to(gridEl, {
+        opacity: 0,
+        duration: 0.15,
+        onComplete: function () {
+          renderGridForCategory();
+          gsap.fromTo(
+            gridEl.children,
+            { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: prefersReducedMotion ? 0.2 : 0.4,
+              stagger: prefersReducedMotion ? 0 : 0.05,
+              ease: 'power2.out',
+            }
+          );
+          gsap.set(gridEl, { opacity: 1 });
+        },
+      });
+    } else {
+      renderGridForCategory();
+    }
   });
 
   renderFilter();
@@ -28,4 +52,22 @@ document.addEventListener('DOMContentLoaded', function () {
   spotlightEl.innerHTML = renderSpotlight(PROJECTS.filter(function (project) {
     return project.featured;
   }));
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    var revealTargets = document.querySelectorAll('.section-heading, .body-text, .spotlight-card');
+    revealTargets.forEach(function (target) {
+      gsap.from(target, {
+        opacity: 0,
+        y: prefersReducedMotion ? 0 : 40,
+        duration: prefersReducedMotion ? 0.3 : 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: target,
+          start: 'top 85%',
+        },
+      });
+    });
+  }
 });
