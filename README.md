@@ -10,10 +10,11 @@ Abra `index.html` diretamente no navegador, ou sirva a pasta com qualquer servid
 
 Requer Node.js 18+.
 
-    node --test tests/
+    node --test
 
 ## Substituir conteúdo placeholder
 
 - Imagens: troque `assets/placeholder-pattern.svg` pelas imagens reais de cada projeto em `js/data.js` (campo `image`).
 - Links: troque `link` em cada projeto de `js/data.js` pela URL do projeto individual no Behance, quando disponível.
-- Contato: o e-mail de contato ainda não está no footer — adicione um `<p>` com o e-mail real em `index.html` dentro de `.footer__contact` quando tiver a informação.
+- Destaques: no máximo 2 projetos podem ter `featured: true` em `js/data.js`, porque o CSS só posiciona 2 cards na seção de destaques.
+- Contato: o e-mail de contato ainda não está no footer — adicione um link (`<a>`) ou texto com o e-mail real dentro do `<p class="footer__contact">` já existente em `index.html` quando tiver a informação (não crie um novo `<p>` aninhado).

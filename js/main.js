@@ -7,14 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var activeCategory = 'Todos';
 
   function renderFilter() {
-    filterEl.innerHTML = categories.map(function (category) {
-      var activeClass = category === activeCategory ? ' filter__item--active' : '';
-      return (
-        '<button class="filter__item' + activeClass + '" data-category="' + category + '" type="button">' +
-          '<span class="filter__dot"></span>' + category +
-        '</button>'
-      );
-    }).join('');
+    filterEl.innerHTML = renderFilterBar(categories, activeCategory);
   }
 
   function renderGridForCategory() {
