@@ -74,6 +74,11 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var particles = [];
 
+    function particleCount() {
+      if (reduceMotion) return 40;
+      return window.innerWidth < 640 ? 60 : 120;
+    }
+
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -99,7 +104,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
     window.addEventListener('resize', function () {
       resize();
-      particles = initParticles(canvas.width, canvas.height, reduceMotion ? 40 : 120, COLORS);
+      particles = initParticles(canvas.width, canvas.height, particleCount(), COLORS);
     });
 
     window.addEventListener('mousemove', function (event) {
@@ -113,7 +118,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
     });
 
     resize();
-    particles = initParticles(canvas.width, canvas.height, reduceMotion ? 40 : 120, COLORS);
+    particles = initParticles(canvas.width, canvas.height, particleCount(), COLORS);
     renderFrame();
     if (!reduceMotion) {
       requestAnimationFrame(tick);

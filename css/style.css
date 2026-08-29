@@ -374,3 +374,62 @@ footer.footer {
   color: var(--color-bone-white);
   margin: var(--spacing-12) 0 0;
 }
+
+@media (max-width: 1024px) {
+  .hero__headline {
+    font-size: 64px;
+    letter-spacing: -2px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .spotlight__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-18);
+  }
+
+  .nav__links {
+    flex-direction: column;
+    gap: var(--spacing-12);
+  }
+
+  .hero {
+    padding: var(--spacing-60) var(--spacing-18);
+    min-height: auto;
+  }
+
+  .hero__headline {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .about,
+  .projects,
+  .spotlight,
+  .footer {
+    padding-left: var(--spacing-18);
+    padding-right: var(--spacing-18);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer__contact {
+    text-align: left;
+  }
+}
