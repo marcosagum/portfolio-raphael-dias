@@ -47,7 +47,7 @@ function renderFilterBar(categories, activeCategory) {
     var activeClass = isActive ? ' filter__item--active' : '';
     return (
       '<button class="filter__item' + activeClass + '" data-category="' + escapeHtml(category) + '" type="button" aria-pressed="' + (isActive ? 'true' : 'false') + '">' +
-        '<span class="filter__dot"></span>' + escapeHtml(category) +
+        escapeHtml(category) +
       '</button>'
     );
   }).join('');
