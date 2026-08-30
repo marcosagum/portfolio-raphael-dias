@@ -5,7 +5,7 @@ function createParticle(width, height, colors) {
     size: 4 + Math.random() * 6,
     color: colors[Math.floor(Math.random() * colors.length)],
     angle: Math.random() * Math.PI * 2,
-    speed: 0.1 + Math.random() * 0.2,
+    speed: 0.4 + Math.random() * 0.8,
     rotation: Math.random() * Math.PI * 2,
     rotationSpeed: (Math.random() - 0.5) * 0.01,
   };
@@ -76,20 +76,22 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
     function particleCount() {
       if (reduceMotion) return 40;
-      return window.innerWidth < 640 ? 60 : 120;
+      return window.innerWidth <= 640 ? 80 : 150;
     }
 
     function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     function renderFrame() {
       ctx.fillStyle = '#000000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
       for (var i = 0; i < particles.length; i++) {
         if (!reduceMotion) {
-          updateParticle(particles[i], canvas.width, canvas.height, mouse.x, mouse.y);
+          updateParticle(particles[i], window.innerWidth, window.innerHeight, mouse.x, mouse.y);
         }
         drawParticle(ctx, particles[i]);
       }
@@ -102,9 +104,20 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       }
     }
 
+    var resizeTimeout = null;
     window.addEventListener('resize', function () {
-      resize();
-      particles = initParticles(canvas.width, canvas.height, particleCount(), COLORS);
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function () {
+        resize();
+        var targetCount = particleCount();
+        if (particles.length > targetCount) {
+          particles = particles.slice(0, targetCount);
+        } else if (particles.length < targetCount) {
+          var extra = initParticles(window.innerWidth, window.innerHeight, targetCount - particles.length, COLORS);
+          particles = particles.concat(extra);
+        }
+        renderFrame();
+      }, 150);
     });
 
     window.addEventListener('mousemove', function (event) {
@@ -112,13 +125,27 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       mouse.y = event.clientY;
     });
 
-    window.addEventListener('mouseleave', function () {
+    document.addEventListener('mouseout', function (event) {
+      if (!event.relatedTarget) {
+        mouse.x = null;
+        mouse.y = null;
+      }
+    });
+
+    window.addEventListener('touchmove', function (event) {
+      if (event.touches && event.touches.length > 0) {
+        mouse.x = event.touches[0].clientX;
+        mouse.y = event.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', function () {
       mouse.x = null;
       mouse.y = null;
     });
 
     resize();
-    particles = initParticles(canvas.width, canvas.height, particleCount(), COLORS);
+    particles = initParticles(window.innerWidth, window.innerHeight, particleCount(), COLORS);
     renderFrame();
     if (!reduceMotion) {
       requestAnimationFrame(tick);
