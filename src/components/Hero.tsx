@@ -24,11 +24,30 @@ export default function Hero() {
         </div>
       </div>
 
-      <div
-        className="anim-rise-in absolute left-1/2 top-1/2 z-20 h-[42vh] w-[70vw] max-w-[640px] -translate-x-1/2 -translate-y-[45%] overflow-hidden rounded-sm shadow-2xl sm:h-[54vh] sm:w-[46vw]"
-        style={{ animationDelay: '300ms' }}
-      >
-        <img src="/projects/kwai-spiderman.png" alt="Kwai × Spider-Man: Brand New Day" className="h-full w-full object-cover" />
+      <div className="absolute left-1/2 top-1/2 z-20 h-[42vh] w-[70vw] max-w-[640px] -translate-x-1/2 -translate-y-[45%] sm:h-[54vh] sm:w-[46vw]">
+        <div
+          className="anim-rise-in absolute inset-0 -rotate-2 overflow-hidden rounded-lg shadow-2xl"
+          style={{ animationDelay: '300ms' }}
+        >
+          <img
+            src="/projects/kwai-spiderman.png"
+            alt="Kwai × Spider-Man: Brand New Day"
+            className="h-full w-full object-cover"
+            style={{ objectPosition: '45% 55%' }}
+          />
+        </div>
+        <div
+          className="anim-rise-in absolute -bottom-8 -right-8 h-[48%] w-[58%] rotate-3 overflow-hidden rounded-lg shadow-2xl ring-4 ring-black"
+          style={{ animationDelay: '480ms' }}
+        >
+          <img
+            src="/projects/kwai-spiderman.png"
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full scale-150 object-cover"
+            style={{ objectPosition: '15% 10%' }}
+          />
+        </div>
       </div>
 
       <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
