@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useInView } from 'framer-motion';
 import TextAnimate from './TextAnimate';
 import CategoryFilter from './CategoryFilter';
 import ProjectSection from './ProjectSection';
@@ -12,17 +13,32 @@ const CATEGORIES = ['Todos', 'Landing Pages', 'Branding', 'UI/UX', 'Campanhas', 
 export default function AboutProjects() {
   const [activeCategory, setActiveCategory] = useState('Todos');
   const visibleProjects: Project[] = filterProjects(PROJECTS, activeCategory);
+  const bioRef = useRef<HTMLDivElement>(null);
+  const isBioInView = useInView(bioRef, { margin: '-50px' });
 
   return (
     <section id="sobre" className="bg-black px-6 sm:px-10">
-      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-6 py-24 text-center">
-        <TextAnimate animation="slideUp" by="word" className="w-full max-w-3xl text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl">
+      <div
+        ref={bioRef}
+        className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center gap-6 py-24 text-center"
+      >
+        <TextAnimate
+          animation="slideUp"
+          by="word"
+          inView={isBioInView}
+          className="w-full text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl"
+        >
           Design pra mim nunca foi só sobre fazer bonito, é sobre fazer sentido. Sou designer gráfico e motion
           designer há mais de 6 anos, e ao longo desse tempo passei por redações, employer branding, campanhas
           institucionais e hoje lidero a direção criativa do Kwai, traduzindo estratégia global em conteúdo que
           realmente conversa com o público brasileiro.
         </TextAnimate>
-        <TextAnimate animation="slideUp" by="word" className="w-full max-w-3xl text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl">
+        <TextAnimate
+          animation="slideUp"
+          by="word"
+          inView={isBioInView}
+          className="w-full text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl"
+        >
           Comecei no Grupo Globo, ainda aprendendo a diferença entre uma peça bonita e uma peça que funciona. De lá
           pra cá, passei pela V.tal e pela Órama Investimentos, sempre no cruzamento entre marca, comunicação e
           conteúdo digital, e hoje boa parte do meu processo criativo já nasce integrado a ferramentas de

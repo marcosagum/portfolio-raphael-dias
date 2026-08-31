@@ -11,6 +11,7 @@ type TextAnimateProps = {
   className?: string;
   delay?: number;
   once?: boolean;
+  inView?: boolean;
 };
 
 const ANIMATION_VARIANTS: Record<AnimationPreset, Variants> = {
@@ -42,9 +43,11 @@ export default function TextAnimate({
   className = '',
   delay = 0,
   once = false,
+  inView,
 }: TextAnimateProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once, margin: '-50px' });
+  const trackedInView = useInView(ref, { once, margin: '-50px' });
+  const isInView = inView ?? trackedInView;
   const shouldReduceMotion = useReducedMotion();
   const segments = splitText(children, by);
   const variants = ANIMATION_VARIANTS[animation];
