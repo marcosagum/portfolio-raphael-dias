@@ -1,0 +1,35 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { PROJECTS } from '../src/data/projects.js';
+
+const VALID_CATEGORIES = ['Landing Pages', 'Branding', 'UI/UX', 'Campanhas', 'Ilustração'];
+
+test('exactly 2 projects are marked featured', () => {
+  const featured = PROJECTS.filter((project) => project.featured === true);
+  assert.equal(featured.length, 2);
+});
+
+test('every project category is one of the fixed categories, never "Todos"', () => {
+  PROJECTS.forEach((project) => {
+    assert.notEqual(project.category, 'Todos');
+    assert.ok(VALID_CATEGORIES.includes(project.category), 'unexpected category: ' + project.category);
+  });
+});
+
+test('every project id is unique', () => {
+  const ids = PROJECTS.map((project) => project.id);
+  assert.equal(new Set(ids).size, ids.length);
+});
+
+test('every project has a non-empty Behance gallery link', () => {
+  PROJECTS.forEach((project) => {
+    assert.ok(typeof project.link === 'string' && project.link.length > 0);
+    assert.ok(project.link.startsWith('https://www.behance.net/'), 'unexpected link: ' + project.link);
+  });
+});
+
+test('every project image path is served from /projects/', () => {
+  PROJECTS.forEach((project) => {
+    assert.ok(project.image.startsWith('/projects/'), 'unexpected image path: ' + project.image);
+  });
+});
