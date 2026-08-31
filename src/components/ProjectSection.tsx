@@ -16,7 +16,6 @@ const LINK_CLASSNAME =
 export default function ProjectSection({ project, index }: ProjectSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: false, margin: '-100px' });
-  const number = String(index + 1).padStart(2, '0');
 
   if (project.featured) {
     return (
@@ -57,12 +56,6 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
       }`}
     >
       <div className="relative w-full lg:w-3/5">
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-2 -top-10 select-none font-hn text-[6rem] font-extrabold leading-none text-white/5 sm:-top-16 sm:text-[10rem]"
-        >
-          {number}
-        </span>
         <motion.div
           initial={{ opacity: 0, scale: 1.08 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.08 }}

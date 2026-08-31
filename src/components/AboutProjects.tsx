@@ -1,8 +1,18 @@
+import { useState } from 'react';
 import TextAnimate from './TextAnimate';
+import CategoryFilter from './CategoryFilter';
 import ProjectSection from './ProjectSection';
 import { PROJECTS } from '../data/projects.js';
+import { filterProjects } from '../lib/filterProjects.js';
+
+type Project = import('../data/projects.js').Project;
+
+const CATEGORIES = ['Todos', 'Landing Pages', 'Branding', 'UI/UX', 'Campanhas', 'Ilustração'];
 
 export default function AboutProjects() {
+  const [activeCategory, setActiveCategory] = useState('Todos');
+  const visibleProjects: Project[] = filterProjects(PROJECTS, activeCategory);
+
   return (
     <section id="sobre" className="bg-black px-6 sm:px-10">
       <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 py-24 text-center">
@@ -14,7 +24,10 @@ export default function AboutProjects() {
       </div>
 
       <div id="projetos" className="pb-12">
-        {PROJECTS.map((project, index) => (
+        <div className="mx-auto mb-16 max-w-4xl px-6">
+          <CategoryFilter categories={CATEGORIES} activeCategory={activeCategory} onSelect={setActiveCategory} />
+        </div>
+        {visibleProjects.map((project, index) => (
           <ProjectSection key={project.id} project={project} index={index} />
         ))}
       </div>
