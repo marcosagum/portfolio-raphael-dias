@@ -15,11 +15,18 @@ export default function AboutProjects() {
 
   return (
     <section id="sobre" className="bg-black px-6 sm:px-10">
-      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-8 py-24 text-center">
-        <TextAnimate animation="slideUp" by="word" className="w-full max-w-4xl text-2xl font-bold text-[#E1E0CC] sm:text-3xl md:text-4xl">
-          Publicitário e designer no Rio de Janeiro, atuando na THNCE Comunicação. Cria landing pages, identidade de
-          marca, interfaces para ambientes in-app e campanhas comerciais e institucionais para marcas como Kwai,
-          Yamaha e TSE.
+      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-6 py-24 text-center">
+        <TextAnimate animation="slideUp" by="word" className="w-full max-w-3xl text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl">
+          Design pra mim nunca foi só sobre fazer bonito, é sobre fazer sentido. Sou designer gráfico e motion
+          designer há mais de 6 anos, e ao longo desse tempo passei por redações, employer branding, campanhas
+          institucionais e hoje lidero a direção criativa do Kwai, traduzindo estratégia global em conteúdo que
+          realmente conversa com o público brasileiro.
+        </TextAnimate>
+        <TextAnimate animation="slideUp" by="word" className="w-full max-w-3xl text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl">
+          Comecei no Grupo Globo, ainda aprendendo a diferença entre uma peça bonita e uma peça que funciona. De lá
+          pra cá, passei pela V.tal e pela Órama Investimentos, sempre no cruzamento entre marca, comunicação e
+          conteúdo digital, e hoje boa parte do meu processo criativo já nasce integrado a ferramentas de
+          inteligência artificial generativa, não como muleta, mas como extensão da minha criatividade.
         </TextAnimate>
       </div>
 

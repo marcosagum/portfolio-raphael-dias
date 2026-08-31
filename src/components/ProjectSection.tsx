@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import TextAnimate from './TextAnimate';
+import TiltedCard from './TiltedCard';
 
 type Project = import('../data/projects.js').Project;
 
@@ -33,12 +34,14 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
           transition={{ duration: isFeatured ? 1 : 0.9, ease: [0.22, 1, 0.36, 1] }}
           className={`mx-auto aspect-[4/3] w-full overflow-hidden rounded-sm bg-black ${isFeatured ? 'max-w-2xl' : 'max-w-lg'}`}
         >
-          <img
-            src={project.image}
-            alt={project.title}
-            loading="lazy"
-            className="h-full w-full object-contain transition-transform duration-700 hover:scale-105"
-          />
+          <TiltedCard className="h-full w-full">
+            <img
+              src={project.image}
+              alt={project.title}
+              loading="lazy"
+              className="h-full w-full object-contain"
+            />
+          </TiltedCard>
         </motion.div>
       </div>
 
