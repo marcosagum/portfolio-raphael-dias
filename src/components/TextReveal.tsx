@@ -20,9 +20,10 @@ function RevealWord({
   const start = index / total;
   const end = start + 1 / total;
   const opacity = useTransform(progress, [start, end], [0.15, 1]);
-  const x = useTransform(progress, [start, end], [60, 0]);
+  const x = useTransform(progress, [start, end], ['35vw', '0vw']);
+  const skewX = useTransform(progress, [start, end], [-8, 0]);
   return (
-    <motion.span style={{ opacity, x }} className="mr-[0.25em] inline-block">
+    <motion.span style={{ opacity, x, skewX }} className="mr-[0.25em] inline-block">
       {word}
     </motion.span>
   );
@@ -43,7 +44,7 @@ export default function TextReveal({ children, className = '' }: TextRevealProps
   }
 
   return (
-    <div ref={containerRef} className="flex h-screen w-full items-center justify-center px-6">
+    <div ref={containerRef} className="flex h-screen w-full items-center justify-center overflow-x-hidden px-6">
       <p className={`flex max-w-4xl flex-wrap justify-center text-center ${className}`}>
         {words.map((word, i) => (
           <RevealWord key={i} word={word} index={i} total={words.length} progress={scrollYProgress} />
