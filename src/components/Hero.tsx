@@ -26,7 +26,7 @@ export default function Hero() {
         </h1>
         <p className="anim-fade-up font-hn text-cream/60" style={{ animationDelay: '700ms' }}>
           <TextRoll center className="text-[6vw] font-extrabold uppercase leading-[0.85] tracking-[-0.02em] sm:text-[3.5vw] lg:text-[2.5vw]">
-            Art
+            Art Design
           </TextRoll>
         </p>
         <p className="anim-fade-up font-hn text-cream/60" style={{ animationDelay: '850ms' }}>
