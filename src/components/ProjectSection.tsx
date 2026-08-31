@@ -29,9 +29,9 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
           initial={{ opacity: 0, scale: 1.08 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.08 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="aspect-[16/9] w-full overflow-hidden rounded-sm"
+          className="mx-auto aspect-[4/3] w-full max-w-2xl overflow-hidden rounded-sm bg-black"
         >
-          <img src={project.image} alt={project.title} loading="lazy" className="h-full w-full object-cover" />
+          <img src={project.image} alt={project.title} loading="lazy" className="h-full w-full object-contain" />
         </motion.div>
         <h3>
           <TextAnimate animation="slideUp" by="word" className="text-3xl font-bold text-[#E1E0CC] sm:text-4xl md:text-5xl">
@@ -67,13 +67,13 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
           initial={{ opacity: 0, scale: 1.08 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.08 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[4/3] w-full overflow-hidden rounded-sm"
+          className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-sm bg-black"
         >
           <img
             src={project.image}
             alt={project.title}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            className="h-full w-full object-contain transition-transform duration-700 hover:scale-105"
           />
         </motion.div>
       </div>
