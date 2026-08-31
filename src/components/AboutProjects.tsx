@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
+import { Linkedin, Mail, MessageCircle, Palette } from 'lucide-react';
 import TextAnimate from './TextAnimate';
 import CategoryFilter from './CategoryFilter';
 import ProjectSection from './ProjectSection';
@@ -8,7 +8,8 @@ import GooeyPillLink from './GooeyPillLink';
 import { PROJECTS } from '../data/projects.js';
 import { filterProjects } from '../lib/filterProjects.js';
 
-const LINK_CLASSNAME = 'transition-colors duration-200 hover:text-primary';
+const LINK_CLASSNAME =
+  'inline-flex items-center gap-2 font-hn text-sm uppercase tracking-wide text-gray-400 transition-colors duration-200 hover:text-primary sm:text-base';
 
 type Project = import('../data/projects.js').Project;
 
@@ -72,26 +73,27 @@ export default function AboutProjects() {
           href="https://wa.me/5521964391698"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3.5 text-sm sm:text-base"
+          className="relative px-6 py-3.5 text-sm sm:text-base"
         >
           <MessageCircle size={18} />
           Chamar no WhatsApp
         </GooeyPillLink>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 font-sans text-sm text-gray-400 sm:text-base">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
           <a href="mailto:Lucas_raphaeld@hotmail.com" className={LINK_CLASSNAME}>
+            <Mail size={16} />
             Lucas_raphaeld@hotmail.com
           </a>
-          <span className="text-gray-700">·</span>
-          <a href="tel:+5521964391698" className={LINK_CLASSNAME}>
-            +55 21 96439-1698
+          <a href="https://wa.me/5521964391698" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+            <MessageCircle size={16} />
+            WhatsApp
           </a>
-          <span className="text-gray-700">·</span>
           <a href="https://www.linkedin.com/in/lucasdiasb/" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+            <Linkedin size={16} />
             LinkedIn
           </a>
-          <span className="text-gray-700">·</span>
           <a href="https://www.behance.net/lucasdiasb" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+            <Palette size={16} />
             Behance
           </a>
         </div>

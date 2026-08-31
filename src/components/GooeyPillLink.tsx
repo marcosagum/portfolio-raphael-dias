@@ -15,7 +15,7 @@ export default function GooeyPillLink({ children, className = '', onClick, ...pr
         burst();
         onClick?.(e);
       }}
-      className={`group relative inline-flex items-center gap-2 rounded-full bg-cream font-hn font-semibold text-black shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-4 ${className}`}
+      className={`group inline-flex items-center gap-2 rounded-full bg-cream font-hn font-semibold text-black shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-transform duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-4 ${className}`}
       {...props}
     >
       {children}
