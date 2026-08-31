@@ -27,8 +27,8 @@ export default function AboutProjects() {
         <div className="mx-auto mb-16 max-w-4xl px-6">
           <CategoryFilter categories={CATEGORIES} activeCategory={activeCategory} onSelect={setActiveCategory} />
         </div>
-        {visibleProjects.map((project, index) => (
-          <ProjectSection key={project.id} project={project} index={index} />
+        {visibleProjects.map((project) => (
+          <ProjectSection key={project.id} project={project} />
         ))}
       </div>
 
