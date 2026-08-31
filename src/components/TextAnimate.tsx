@@ -10,6 +10,7 @@ type TextAnimateProps = {
   by?: SplitBy;
   className?: string;
   delay?: number;
+  once?: boolean;
 };
 
 const ANIMATION_VARIANTS: Record<AnimationPreset, Variants> = {
@@ -34,9 +35,16 @@ function splitText(text: string, by: SplitBy): string[] {
   return text.trim().split(/\s+/);
 }
 
-export default function TextAnimate({ children, animation = 'fadeIn', by = 'word', className = '', delay = 0 }: TextAnimateProps) {
+export default function TextAnimate({
+  children,
+  animation = 'fadeIn',
+  by = 'word',
+  className = '',
+  delay = 0,
+  once = false,
+}: TextAnimateProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once, margin: '-50px' });
   const shouldReduceMotion = useReducedMotion();
   const segments = splitText(children, by);
   const variants = ANIMATION_VARIANTS[animation];
