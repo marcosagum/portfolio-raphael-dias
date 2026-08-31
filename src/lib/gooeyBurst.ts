@@ -14,18 +14,16 @@ type GooeyBurstOptions = {
   distance?: number;
 };
 
-export function spawnGooeyBurst(container: HTMLElement, { count = 10, distance = 46 }: GooeyBurstOptions = {}) {
+export function spawnGooeyBurst(container: HTMLElement, { count = 10, distance = 56 }: GooeyBurstOptions = {}) {
   for (let i = 0; i < count; i++) {
-    const [endX, endY] = getXY(distance + noise(14), count - i, count);
-    const time = 500 + noise(300);
-    const rotate = noise(60);
+    const [startX, startY] = getXY(distance + noise(16), count - i, count);
+    const time = 550 + noise(250);
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
 
     const particle = document.createElement('span');
     particle.className = 'gooey-particle';
-    particle.style.setProperty('--end-x', `${endX}px`);
-    particle.style.setProperty('--end-y', `${endY}px`);
-    particle.style.setProperty('--rotate', `${rotate}deg`);
+    particle.style.setProperty('--start-x', `${startX}px`);
+    particle.style.setProperty('--start-y', `${startY}px`);
     particle.style.setProperty('--time', `${time}ms`);
 
     const dot = document.createElement('span');
