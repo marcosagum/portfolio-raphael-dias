@@ -25,11 +25,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         delay: shouldReduceMotion ? 0 : staggerIndex * 0.15,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={`group flex flex-col overflow-hidden rounded-xl border border-white/5 bg-[#212121] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_40px_-15px_rgba(222,219,200,0.15)] ${
+      className={`group relative flex flex-col p-4 transition-transform duration-300 hover:-translate-y-1 ${
         project.featured ? 'sm:col-span-2' : ''
       }`}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+      <div
+        className="absolute inset-0 -z-10 rounded-[2.5rem] bg-[#212121] transition-all duration-300 group-hover:bg-[#262626] group-hover:shadow-[0_20px_40px_-15px_rgba(222,219,200,0.15)]"
+        style={{ filter: 'url(#squicircle-filter)' }}
+      />
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
         <img
           src={project.image}
           alt={project.title}
@@ -42,7 +46,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </span>
         )}
       </div>
-      <div className="mt-4">
+      <div className="relative mt-4">
         <p className="font-sans text-[10px] uppercase tracking-wide text-primary">{project.category}</p>
         <h3 className="mt-1 font-sans text-lg font-bold text-[#E1E0CC]">{project.title}</h3>
         <p className="mt-1 text-sm text-gray-400">{project.description}</p>
