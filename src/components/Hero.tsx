@@ -7,7 +7,7 @@ const NAV_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lucas-dias-815073147/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lucasdiasb/' },
   { label: 'Behance', href: 'https://www.behance.net/lucasdiasb' },
 ];
 
@@ -36,14 +36,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-10 sm:pt-8">
-        <a
-          href="#top"
-          className={`anim-fade-up font-hn text-lg tracking-wide text-cream ${FOCUS_RING}`}
-          style={{ animationDelay: '800ms' }}
-        >
-          Raphael Dias
-        </a>
+      <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-end px-6 pt-6 sm:px-10 sm:pt-8">
         <div
           className="anim-fade-up flex flex-col items-end gap-3 sm:flex-row sm:items-start sm:gap-16 lg:gap-24"
           style={{ animationDelay: '900ms' }}
