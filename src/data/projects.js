@@ -1,3 +1,15 @@
+/**
+ * @typedef {Object} Project
+ * @property {string} id
+ * @property {string} title
+ * @property {string} description
+ * @property {string} category
+ * @property {string} image
+ * @property {string} link
+ * @property {boolean} featured
+ */
+
+/** @type {Project[]} */
 export const PROJECTS = [
   {
     id: 'wc2026-nao-transmissao',

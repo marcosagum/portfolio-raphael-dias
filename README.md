@@ -28,11 +28,11 @@ Abre em `http://localhost:5173` (ou a porta que o Vite indicar).
 
 Os 12 projetos em `src/data/projects.js` usam título, descrição, categoria, imagem e link reais, extraídos do perfil [behance.net/lucasdiasb](https://www.behance.net/lucasdiasb). As imagens ficam em `public/projects/` (servidas na raiz pelo Vite, ex: `/projects/kwai-spiderman.png`).
 
-- Destaques: no máximo 2 projetos podem ter `featured: true` em `src/data/projects.js` — eles ganham um card maior (`sm:col-span-2`) na grade.
+- Destaques: exatamente 2 projetos devem ter `featured: true` em `src/data/projects.js` (é o que `tests/projects.test.js` verifica) — eles ganham um card maior (`sm:col-span-2`) na grade.
 - Para adicionar um novo projeto: coloque a imagem de capa em `public/projects/`, adicione um objeto em `src/data/projects.js` seguindo o formato existente (`id`, `title`, `description`, `category`, `image`, `link`, `featured`) e rode os testes (`npm test`) para confirmar que os invariantes continuam válidos.
 - A imagem de destaque do Hero (`src/components/Hero.tsx`) usa `/projects/kwai-spiderman.png` — troque o caminho ali se quiser destacar outra arte.
 - Contato: os links de LinkedIn e Behance ficam no rodapé da seção Sobre + Projetos (`src/components/AboutProjects.tsx`).
 
 ## Deploy
 
-O projeto está conectado ao Vercel (framework Vite detectado automaticamente a partir do `package.json`). Todo `git push` para `master` gera um novo deploy de produção automaticamente.
+O projeto está conectado ao Vercel. O `vercel.json` na raiz fixa o preset de build (Vite, `npm run build`, saída em `dist/`), então o deploy funciona independentemente da configuração salva no painel do Vercel. Todo `git push` para `master` gera um novo deploy de produção automaticamente.

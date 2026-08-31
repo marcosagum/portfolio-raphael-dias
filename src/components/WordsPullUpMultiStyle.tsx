@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 
 type Segment = {
@@ -14,6 +14,7 @@ type WordsPullUpMultiStyleProps = {
 export default function WordsPullUpMultiStyle({ segments, className = '' }: WordsPullUpMultiStyleProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
+  const shouldReduceMotion = useReducedMotion();
 
   let wordIndex = 0;
   const rendered = segments.map((segment, segmentIndex) => {
@@ -25,9 +26,13 @@ export default function WordsPullUpMultiStyle({ segments, className = '' }: Word
         <span key={`${segmentIndex}-${i}`} className="overflow-hidden pb-1 pr-[0.25em]">
           <motion.span
             className={`inline-block ${segment.className || ''}`}
-            initial={{ y: '100%', opacity: 0 }}
+            initial={shouldReduceMotion ? false : { y: '100%', opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: currentIndex * 0.08, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.6,
+              delay: shouldReduceMotion ? 0 : currentIndex * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
             {word}
           </motion.span>

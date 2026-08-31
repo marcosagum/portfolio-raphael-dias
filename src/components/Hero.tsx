@@ -62,7 +62,7 @@ export default function Hero() {
                 key={link.label}
                 href={link.href}
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 className={`anim-fade-up transition-opacity duration-300 hover:opacity-60 ${FOCUS_RING}`}
                 style={{ animationDelay: `${1150 + i * 80}ms` }}
               >

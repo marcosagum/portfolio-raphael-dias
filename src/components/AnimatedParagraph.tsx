@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from 'framer-motion';
 import { useRef } from 'react';
 
 type AnimatedParagraphProps = {
@@ -25,7 +25,16 @@ function AnimatedLetter({
 export default function AnimatedParagraph({ text, className = '' }: AnimatedParagraphProps) {
   const ref = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.8', 'end 0.2'] });
+  const shouldReduceMotion = useReducedMotion();
   const characters = text.split('');
+
+  if (shouldReduceMotion) {
+    return (
+      <p ref={ref} className={className}>
+        {text}
+      </p>
+    );
+  }
 
   return (
     <p ref={ref} className={className}>
