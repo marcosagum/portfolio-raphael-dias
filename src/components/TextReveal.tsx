@@ -20,8 +20,9 @@ function RevealWord({
   const start = index / total;
   const end = start + 1 / total;
   const opacity = useTransform(progress, [start, end], [0.15, 1]);
+  const x = useTransform(progress, [start, end], [60, 0]);
   return (
-    <motion.span style={{ opacity }} className="mr-[0.25em] inline-block">
+    <motion.span style={{ opacity, x }} className="mr-[0.25em] inline-block">
       {word}
     </motion.span>
   );
@@ -29,7 +30,7 @@ function RevealWord({
 
 export default function TextReveal({ children, className = '' }: TextRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start end', 'end start'] });
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start end', 'center center'] });
   const shouldReduceMotion = useReducedMotion();
   const words = children.trim().split(/\s+/);
 
