@@ -79,23 +79,25 @@ export default function AboutProjects() {
           Chamar no WhatsApp
         </GooeyPillLink>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        <div className="flex w-full flex-col items-center gap-5 border-t border-white/10 pt-8">
           <a href="mailto:Lucas_raphaeld@hotmail.com" className={LINK_CLASSNAME}>
-            <Mail size={16} />
+            <Mail size={16} className="shrink-0" />
             Lucas_raphaeld@hotmail.com
           </a>
-          <a href="https://wa.me/5521964391698" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
-            <MessageCircle size={16} />
-            WhatsApp
-          </a>
-          <a href="https://www.linkedin.com/in/lucasdiasb/" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
-            <Linkedin size={16} />
-            LinkedIn
-          </a>
-          <a href="https://www.behance.net/lucasdiasb" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
-            <Palette size={16} />
-            Behance
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            <a href="https://wa.me/5521964391698" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+              <MessageCircle size={16} className="shrink-0" />
+              WhatsApp
+            </a>
+            <a href="https://www.linkedin.com/in/lucasdiasb/" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+              <Linkedin size={16} className="shrink-0" />
+              LinkedIn
+            </a>
+            <a href="https://www.behance.net/lucasdiasb" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+              <Palette size={16} className="shrink-0" />
+              Behance
+            </a>
+          </div>
         </div>
       </footer>
     </section>
