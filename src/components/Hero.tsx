@@ -3,7 +3,6 @@ import TextRoll from './TextRoll';
 const NAV_LINKS = [
   { label: 'Trabalhos', href: '#projetos' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Contato', href: '#contato' },
 ];
 
 const SOCIAL_LINKS = [
@@ -68,6 +67,13 @@ export default function Hero() {
               </a>
             ))}
           </div>
+          <a
+            href="#contato"
+            className={`anim-fade-up rounded-full bg-cream px-5 py-2 font-hn text-sm font-semibold text-black transition-transform duration-200 hover:scale-105 ${FOCUS_RING}`}
+            style={{ animationDelay: '1300ms' }}
+          >
+            Contato
+          </a>
         </div>
       </header>
 
