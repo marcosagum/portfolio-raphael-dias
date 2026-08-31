@@ -1,10 +1,14 @@
 import { useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
+import { MessageCircle } from 'lucide-react';
 import TextAnimate from './TextAnimate';
 import CategoryFilter from './CategoryFilter';
 import ProjectSection from './ProjectSection';
+import GooeyPillLink from './GooeyPillLink';
 import { PROJECTS } from '../data/projects.js';
 import { filterProjects } from '../lib/filterProjects.js';
+
+const LINK_CLASSNAME = 'transition-colors duration-200 hover:text-primary';
 
 type Project = import('../data/projects.js').Project;
 
@@ -57,32 +61,40 @@ export default function AboutProjects() {
 
       <footer
         id="contato"
-        className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 pb-24 text-xs text-gray-400 sm:flex-row sm:items-end sm:text-sm"
+        className="mx-auto flex max-w-2xl flex-col items-center gap-8 px-6 pb-28 pt-8 text-center"
       >
-        <p className="max-w-xs">
-          Raphael Dias é publicitário e designer no Rio de Janeiro, atuando com branding, landing pages e campanhas
-          digitais.
-        </p>
-        <p className="text-right">
-          LinkedIn:{' '}
-          <a
-            href="https://www.linkedin.com/in/lucasdiasb/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:opacity-80"
-          >
-            lucasdiasb
-          </a>{' '}
-          · Behance:{' '}
-          <a
-            href="https://www.behance.net/lucasdiasb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:opacity-80"
-          >
-            lucasdiasb
+        <p className="font-hn text-xs uppercase tracking-[0.2em] text-gray-500">Contato</p>
+        <h2 className="font-hn text-3xl font-bold uppercase leading-tight text-[#E1E0CC] sm:text-4xl md:text-5xl">
+          Vamos criar algo juntos?
+        </h2>
+
+        <GooeyPillLink
+          href="https://wa.me/5521964391698"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-6 py-3.5 text-sm sm:text-base"
+        >
+          <MessageCircle size={18} />
+          Chamar no WhatsApp
+        </GooeyPillLink>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2 font-sans text-sm text-gray-400 sm:text-base">
+          <a href="mailto:Lucas_raphaeld@hotmail.com" className={LINK_CLASSNAME}>
+            Lucas_raphaeld@hotmail.com
           </a>
-        </p>
+          <span className="text-gray-700">·</span>
+          <a href="tel:+5521964391698" className={LINK_CLASSNAME}>
+            +55 21 96439-1698
+          </a>
+          <span className="text-gray-700">·</span>
+          <a href="https://www.linkedin.com/in/lucasdiasb/" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+            LinkedIn
+          </a>
+          <span className="text-gray-700">·</span>
+          <a href="https://www.behance.net/lucasdiasb" target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
+            Behance
+          </a>
+        </div>
       </footer>
     </section>
   );
