@@ -35,7 +35,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-end px-6 pt-6 sm:px-10 sm:pt-8">
+      <header className="absolute inset-x-0 top-0 z-50 flex items-start justify-end px-6 pt-6 sm:px-10 sm:pt-8">
         <div
           className="anim-fade-up flex flex-col items-end gap-3 sm:flex-row sm:items-start sm:gap-16 lg:gap-24"
           style={{ animationDelay: '900ms' }}
@@ -67,13 +67,6 @@ export default function Hero() {
               </a>
             ))}
           </div>
-          <a
-            href="#contato"
-            className={`anim-fade-up rounded-full bg-cream px-5 py-2 font-hn text-sm font-semibold text-black transition-transform duration-200 hover:scale-105 ${FOCUS_RING}`}
-            style={{ animationDelay: '1300ms' }}
-          >
-            Contato
-          </a>
         </div>
       </header>
 
@@ -82,7 +75,7 @@ export default function Hero() {
         style={{ animationDelay: '1200ms' }}
       />
 
-      <footer className="absolute inset-x-0 bottom-0 z-30 flex items-end justify-between px-6 pb-5 font-hn text-xs leading-relaxed text-cream sm:px-10 sm:pb-8 sm:text-sm">
+      <footer className="absolute inset-x-0 bottom-0 z-50 flex items-end justify-between px-6 pb-5 font-hn text-xs leading-relaxed text-cream sm:px-10 sm:pb-8 sm:text-sm">
         <div className="anim-fade-up" style={{ animationDelay: '1400ms' }}>
           <p>Publicitário</p>
           <p>Designer</p>

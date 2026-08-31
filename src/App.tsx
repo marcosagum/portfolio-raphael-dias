@@ -1,6 +1,7 @@
 import Hero from './components/Hero';
 import AboutProjects from './components/AboutProjects';
 import ClickSpark from './components/ClickSpark';
+import FloatingContact from './components/FloatingContact';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
         <Hero />
         <AboutProjects />
       </main>
+      <FloatingContact />
     </ClickSpark>
   );
 }
