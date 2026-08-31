@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TextReveal from './TextReveal';
+import TextAnimate from './TextAnimate';
 import CategoryFilter from './CategoryFilter';
 import ProjectCard from './ProjectCard';
 import { PROJECTS } from '../data/projects.js';
@@ -15,6 +16,11 @@ export default function AboutProjects() {
 
   return (
     <section id="sobre" className="bg-black px-6 sm:px-10">
+      <div className="pt-16 text-center">
+        <TextAnimate animation="slideUp" by="word" className="text-[10px] uppercase tracking-wide text-primary sm:text-xs">
+          Sobre mim
+        </TextAnimate>
+      </div>
       <TextReveal className="text-2xl font-bold text-[#E1E0CC] sm:text-3xl md:text-4xl">
         Publicitário e designer no Rio de Janeiro, atuando na THNCE Comunicação. Cria landing pages, identidade de
         marca, interfaces para ambientes in-app e campanhas comerciais e institucionais para marcas como Kwai, Yamaha
