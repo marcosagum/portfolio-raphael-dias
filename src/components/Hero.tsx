@@ -1,9 +1,6 @@
 import TextRoll from './TextRoll';
-
-const NAV_LINKS = [
-  { label: 'Trabalhos', href: '#projetos' },
-  { label: 'Sobre', href: '#sobre' },
-];
+import { useLanguage } from '../i18n/LanguageContext';
+import { UI_TEXT } from '../i18n/translations';
 
 const SOCIAL_LINKS = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lucasdiasb/' },
@@ -13,6 +10,13 @@ const SOCIAL_LINKS = [
 const FOCUS_RING = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-cream focus-visible:outline-offset-4';
 
 export default function Hero() {
+  const { language } = useLanguage();
+  const t = UI_TEXT[language];
+  const navLinks = [
+    { label: t.navWork, href: '#projetos' },
+    { label: t.navAbout, href: '#sobre' },
+  ];
+
   return (
     <section className="relative h-[100dvh] w-full overflow-hidden bg-black">
       <div className="anim-fade-in absolute inset-0 h-full w-full bg-black" />
@@ -42,7 +46,7 @@ export default function Hero() {
         >
           <span className="hidden font-hn text-sm text-cream sm:inline">2026</span>
           <nav className="flex flex-col gap-0.5 font-hn text-sm text-cream">
-            {NAV_LINKS.map((link, i) => (
+            {navLinks.map((link, i) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -77,13 +81,13 @@ export default function Hero() {
 
       <footer className="absolute inset-x-0 bottom-0 z-50 flex items-end justify-between px-6 pb-5 font-hn text-xs leading-relaxed text-cream sm:px-10 sm:pb-8 sm:text-sm">
         <div className="anim-fade-up" style={{ animationDelay: '1400ms' }}>
-          <p>Publicitário</p>
+          <p>{t.heroRole}</p>
           <p>Designer</p>
-          <p>Rio de Janeiro</p>
+          <p>{t.heroLocation}</p>
         </div>
         <div className="anim-fade-up text-right" style={{ animationDelay: '1550ms' }}>
-          <p>Publicidade e design</p>
-          <p>assinados por Raphael Dias</p>
+          <p>{t.heroCredit1}</p>
+          <p>{t.heroCredit2}</p>
         </div>
       </footer>
     </section>

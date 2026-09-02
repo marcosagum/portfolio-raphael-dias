@@ -3,6 +3,8 @@ import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
 import TextAnimate from './TextAnimate';
 import TiltedCard from './TiltedCard';
+import { useLanguage } from '../i18n/LanguageContext';
+import { CATEGORY_LABELS, UI_TEXT } from '../i18n/translations';
 
 type Project = import('../data/projects.js').Project;
 
@@ -19,6 +21,11 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
   const isInView = useInView(ref, { once: false, margin: '-100px' });
   const isFeatured = project.featured;
   const isEven = index % 2 === 0;
+  const { language } = useLanguage();
+  const t = UI_TEXT[language];
+  const title = project.title[language];
+  const description = project.description[language];
+  const categoryLabel = CATEGORY_LABELS[language][project.category] ?? project.category;
 
   return (
     <div
@@ -37,7 +44,7 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
           <TiltedCard className="h-full w-full">
             <img
               src={project.image}
-              alt={project.title}
+              alt={title}
               loading="lazy"
               className="h-full w-full object-contain"
             />
@@ -47,8 +54,8 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
 
       <div className="w-full text-center lg:w-2/5 lg:text-left">
         <p className="font-sans text-[10px] uppercase tracking-wide text-primary sm:text-xs">
-          {project.category}
-          {isFeatured ? ' · Destaque' : ''}
+          {categoryLabel}
+          {isFeatured ? ` · ${t.featuredSuffix}` : ''}
         </p>
         <h3 className="mt-3">
           <TextAnimate
@@ -56,12 +63,12 @@ export default function ProjectSection({ project, index }: ProjectSectionProps) 
             by="word"
             className={`font-bold text-[#E1E0CC] ${isFeatured ? 'text-3xl sm:text-4xl md:text-5xl' : 'text-2xl sm:text-3xl md:text-4xl'}`}
           >
-            {project.title}
+            {title}
           </TextAnimate>
         </h3>
-        <p className="mt-4 text-sm text-gray-400 sm:text-base">{project.description}</p>
+        <p className="mt-4 text-sm text-gray-400 sm:text-base">{description}</p>
         <a href={project.link} target="_blank" rel="noopener noreferrer" className={LINK_CLASSNAME}>
-          Ver no Behance
+          {t.viewOnBehance}
           <ArrowRight size={16} className="-rotate-45" />
         </a>
       </div>

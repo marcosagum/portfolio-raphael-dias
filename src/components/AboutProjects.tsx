@@ -7,6 +7,8 @@ import ProjectSection from './ProjectSection';
 import GooeyPillLink from './GooeyPillLink';
 import { PROJECTS } from '../data/projects.js';
 import { filterProjects } from '../lib/filterProjects.js';
+import { useLanguage } from '../i18n/LanguageContext';
+import { BIO_PARAGRAPHS, UI_TEXT } from '../i18n/translations';
 
 const LINK_CLASSNAME =
   'inline-flex items-center gap-2 font-hn text-sm uppercase tracking-wide text-gray-400 transition-colors duration-200 hover:text-primary sm:text-base';
@@ -20,6 +22,9 @@ export default function AboutProjects() {
   const visibleProjects: Project[] = filterProjects(PROJECTS, activeCategory);
   const bioRef = useRef<HTMLDivElement>(null);
   const isBioInView = useInView(bioRef, { margin: '-50px' });
+  const { language } = useLanguage();
+  const t = UI_TEXT[language];
+  const [bioParagraph1, bioParagraph2] = BIO_PARAGRAPHS[language];
 
   return (
     <section id="sobre" className="bg-black px-6 sm:px-10">
@@ -28,26 +33,22 @@ export default function AboutProjects() {
         className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center gap-6 py-24 text-center"
       >
         <TextAnimate
+          key={`bio-1-${language}`}
           animation="slideUp"
           by="word"
           inView={isBioInView}
           className="w-full text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl"
         >
-          Design pra mim nunca foi só sobre fazer bonito, é sobre fazer sentido. Sou designer gráfico e motion
-          designer há mais de 6 anos, e ao longo desse tempo passei por redações, employer branding, campanhas
-          institucionais e hoje lidero a direção criativa do Kwai, traduzindo estratégia global em conteúdo que
-          realmente conversa com o público brasileiro.
+          {bioParagraph1}
         </TextAnimate>
         <TextAnimate
+          key={`bio-2-${language}`}
           animation="slideUp"
           by="word"
           inView={isBioInView}
           className="w-full text-lg font-medium text-[#E1E0CC] sm:text-xl md:text-2xl"
         >
-          Comecei no Grupo Globo, ainda aprendendo a diferença entre uma peça bonita e uma peça que funciona. De lá
-          pra cá, passei pela V.tal e pela Órama Investimentos, sempre no cruzamento entre marca, comunicação e
-          conteúdo digital, e hoje boa parte do meu processo criativo já nasce integrado a ferramentas de
-          inteligência artificial generativa, não como muleta, mas como extensão da minha criatividade.
+          {bioParagraph2}
         </TextAnimate>
       </div>
 
@@ -64,9 +65,9 @@ export default function AboutProjects() {
         id="contato"
         className="mx-auto flex max-w-2xl flex-col items-center gap-8 px-6 pb-28 pt-8 text-center"
       >
-        <p className="font-hn text-xs uppercase tracking-[0.2em] text-gray-500">Contato</p>
+        <p className="font-hn text-xs uppercase tracking-[0.2em] text-gray-500">{t.contactEyebrow}</p>
         <h2 className="font-hn text-3xl font-bold uppercase leading-tight text-[#E1E0CC] sm:text-4xl md:text-5xl">
-          Vamos criar algo juntos?
+          {t.contactHeading}
         </h2>
 
         <GooeyPillLink
@@ -76,7 +77,7 @@ export default function AboutProjects() {
           className="relative px-6 py-3.5 text-sm sm:text-base"
         >
           <MessageCircle size={18} />
-          Chamar no WhatsApp
+          {t.whatsappCta}
         </GooeyPillLink>
 
         <div className="flex w-full flex-col items-center gap-5 border-t border-white/10 pt-8">
