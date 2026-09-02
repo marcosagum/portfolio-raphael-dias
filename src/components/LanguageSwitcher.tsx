@@ -13,13 +13,14 @@ function FlagBR() {
 }
 
 function FlagUS() {
+  const stripeHeight = 16 / 13;
   return (
     <svg viewBox="0 0 24 16" className="h-full w-full">
       <rect width="24" height="16" fill="#fff" />
       {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-        <rect key={i} y={i * (16 / 13)} width="24" height={16 / 13} fill="#b22234" />
+        <rect key={i} y={2 * i * stripeHeight} width="24" height={stripeHeight} fill="#b22234" />
       ))}
-      <rect width="10" height={(16 / 13) * 7} fill="#3c3b6e" />
+      <rect width="10" height={stripeHeight * 7} fill="#3c3b6e" />
     </svg>
   );
 }
